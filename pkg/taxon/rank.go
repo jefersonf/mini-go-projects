@@ -15,6 +15,8 @@ const (
 	Species
 )
 
+const TotalTaxons = 8
+
 func GetTaxonNameByRank(rank TaxonRank) (string, error) {
 	var name string
 	switch rank {
