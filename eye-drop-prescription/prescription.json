@@ -1,0 +1,31 @@
+{
+    "vigamox": {
+        "interval": 6,
+        "interval_size": "hour",
+        "type": "drop",
+        "quantity": 1,
+        "duration": 7,
+        "duration_unit": "day",
+        "first_medication": "2023-11-22T11:40:00.000Z"
+    },
+    "oftpred": {
+        "interval": 3,
+        "interval_size": "hour",
+        "type": "drop",
+        "quantity": 1,
+        "duration": 30,
+        "duration_unit": "day",
+        "interval_change": 1,
+        "interval_mod": 5,
+        "first_medication": "2023-11-22T11:20:00.000Z"
+    },
+    "optilar": {
+        "interval": 8,
+        "interval_size": "hour",
+        "type": "drop",
+        "quantity": 1,
+        "duration": 30,
+        "duration_unit": "day",
+        "first_medication": "2023-11-22T11:30:00.000Z"
+    }
+}
