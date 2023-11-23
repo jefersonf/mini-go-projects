@@ -2,7 +2,7 @@
     "vigamox": {
         "interval": 6,
         "interval_size": "hour",
-        "type": "drop",
+        "type": "eye drop",
         "quantity": 1,
         "duration": 7,
         "duration_unit": "day",
@@ -11,7 +11,7 @@
     "oftpred": {
         "interval": 3,
         "interval_size": "hour",
-        "type": "drop",
+        "type": "eye drop",
         "quantity": 1,
         "duration": 30,
         "duration_unit": "day",
@@ -22,7 +22,7 @@
     "optilar": {
         "interval": 8,
         "interval_size": "hour",
-        "type": "drop",
+        "type": "eye drop",
         "quantity": 1,
         "duration": 30,
         "duration_unit": "day",
