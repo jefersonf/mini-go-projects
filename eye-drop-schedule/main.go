@@ -24,7 +24,7 @@ type Medication struct {
 
 type Prescription map[string]Medication
 
-type ScheduledMedice struct {
+type ScheduledMedicine struct {
 	Name     string
 	DateTime time.Time
 	Type     string
@@ -44,7 +44,7 @@ func main() {
 		fmt.Println(err)
 	}
 
-	scheduled := make([]ScheduledMedice, 0)
+	scheduled := make([]ScheduledMedicine, 0)
 
 	for k, v := range p {
 
@@ -67,7 +67,7 @@ func main() {
 
 		for medicationDate.Before(endMedication) {
 
-			medication := ScheduledMedice{
+			medication := ScheduledMedicine{
 				Name:     k,
 				DateTime: medicationDate,
 				Type:     v.Type,
@@ -94,7 +94,7 @@ func main() {
 		}
 	}
 
-	slices.SortFunc(scheduled, func(a, b ScheduledMedice) int {
+	slices.SortFunc(scheduled, func(a, b ScheduledMedicine) int {
 		return a.DateTime.Compare(b.DateTime)
 	})
 
