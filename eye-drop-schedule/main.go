@@ -46,18 +46,18 @@ func main() {
 
 	scheduled := make([]ScheduledMedicine, 0)
 
-	for k, v := range p {
+	for name, spec := range p {
 
-		if v.IntervalMod == 0 {
-			v.IntervalMod = math.MaxInt
+		if spec.IntervalMod == 0 {
+			spec.IntervalMod = math.MaxInt
 		}
 
-		duration := v.Duration
-		if v.DurationUnit == "day" {
+		duration := spec.Duration
+		if spec.DurationUnit == "day" {
 			duration *= int(time.Hour) * 24
 		}
 
-		medicationDate, err := time.Parse(time.RFC3339, v.FirstMedication)
+		medicationDate, err := time.Parse(time.RFC3339, spec.FirstMedication)
 		if err != nil {
 			fmt.Println(err)
 		}
@@ -68,24 +68,24 @@ func main() {
 		for medicationDate.Before(endMedication) {
 
 			medication := ScheduledMedicine{
-				Name:     k,
+				Name:     name,
 				DateTime: medicationDate,
-				Type:     v.Type,
-				Quantity: v.Quantity,
+				Type:     spec.Type,
+				Quantity: spec.Quantity,
 			}
 
-			if _, ok := medicationStartDateOf[k]; !ok {
-				medicationStartDateOf[k] = medicationDate
+			if _, ok := medicationStartDateOf[name]; !ok {
+				medicationStartDateOf[name] = medicationDate
 			} else {
-				elapsedDays := medicationDate.Sub(medicationStartDateOf[k]).Hours() / 24
-				if elapsedDays >= float64(v.IntervalMod) {
-					v.IntervalMod += v.IntervalMod
-					v.Interval += v.IntervalChange
+				elapsedDays := medicationDate.Sub(medicationStartDateOf[name]).Hours() / 24
+				if elapsedDays >= float64(spec.IntervalMod) {
+					spec.IntervalMod += spec.IntervalMod
+					spec.Interval += spec.IntervalChange
 				}
 			}
 
-			intervalUnit := v.Interval
-			if v.IntervalSize == "hour" {
+			intervalUnit := spec.Interval
+			if spec.IntervalSize == "hour" {
 				intervalUnit *= int(time.Hour)
 			}
 
