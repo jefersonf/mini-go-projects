@@ -9,14 +9,14 @@ func ListenAndServe(listenAddress, appLang string) *http.Server {
 		w.Write([]byte("api/v1"))
 	})
 
-	srv := &http.Server{
+	server := &http.Server{
 		Addr:    listenAddress,
 		Handler: routes,
 	}
 
 	go func() {
-		panic(srv.ListenAndServe())
+		panic(server.ListenAndServe())
 	}()
 
-	return srv
+	return server
 }
