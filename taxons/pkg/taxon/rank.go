@@ -37,7 +37,7 @@ func GetTaxonNameByRank(rank TaxonRank) (string, error) {
 	case Species:
 		name = "Species"
 	default:
-		return name, errors.New("Invalid taxon rank")
+		return name, errors.New("invalid taxon rank name")
 	}
 	return name, nil
 }
