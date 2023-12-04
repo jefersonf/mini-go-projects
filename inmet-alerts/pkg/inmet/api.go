@@ -2,36 +2,36 @@ package inmet
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
+	"log"
 	"net/http"
 )
 
 const (
 	ActiveAlertsEndpoint = "https://apiprevmet3.inmet.gov.br/avisos/ativos"
-
-	alertEndpoint = "https://apiprevmet3.inmet.gov.br/aviso/getByID/%v"
+	// alertEndpoint = "https://apiprevmet3.inmet.gov.br/aviso/getByID/%v"
 )
 
-func FetchData() {
+func FetchData() (*ActiveAlerts, error) {
 
-	resp, err := http.Get(fmt.Sprintf(alertEndpoint, 45678))
+	var alerts ActiveAlerts
+
+	log.Println("Fetching data from INMET..")
+	resp, err := http.Get(ActiveAlertsEndpoint)
 	if err != nil {
-		panic(err)
+		return &alerts, err
 	}
 	defer resp.Body.Close()
 
 	data, err := io.ReadAll(resp.Body)
 	if err != nil {
-		fmt.Println(err)
+		return &alerts, err
 	}
 
-	var alert BaseAlert
-
-	err = json.Unmarshal(data, &alert)
+	err = json.Unmarshal(data, &alerts)
 	if err != nil {
-		fmt.Println("error while unmarchaling: ", err)
+		return &alerts, err
 	}
 
-	fmt.Printf("%#+v\n", alert)
+	return &alerts, nil
 }
