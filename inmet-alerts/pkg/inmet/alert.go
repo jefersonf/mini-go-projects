@@ -1,8 +1,10 @@
 package inmet
 
+type WeatherAlerts []Alert
+
 type ActiveAlerts struct {
-	Today  []Alert `json:"hoje"`
-	Future []Alert `json:"futuro"`
+	Today  WeatherAlerts `json:"hoje"`
+	Future WeatherAlerts `json:"futuro"`
 }
 
 type BaseAlert struct {
@@ -42,4 +44,16 @@ type Alert struct {
 	Severity     string   `json:"severidade"`
 	Risks        []string `json:"riscos"`
 	Instructions []string `json:"instrucoes"`
+}
+
+func (wa *WeatherAlerts) Count() int {
+	return len(*wa)
+}
+
+func (aa *ActiveAlerts) GetAll() (WeatherAlerts, WeatherAlerts) {
+	return aa.Today, aa.Future
+}
+
+func (aa *ActiveAlerts) Count() int {
+	return aa.Today.Count() + aa.Future.Count()
 }
