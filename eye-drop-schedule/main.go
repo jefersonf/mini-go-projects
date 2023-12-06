@@ -33,7 +33,7 @@ type ScheduledMedicine struct {
 
 func main() {
 
-	data, err := os.ReadFile("prescription.json")
+	data, err := os.ReadFile("sample_prescription.json")
 	if err != nil {
 		panic(err)
 	}
