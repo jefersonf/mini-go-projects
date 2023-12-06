@@ -1,10 +1,10 @@
 package inmet
 
-type WeatherAlerts []Alert
+type weatherAlerts []Alert
 
 type ActiveAlerts struct {
-	Today  WeatherAlerts `json:"hoje"`
-	Future WeatherAlerts `json:"futuro"`
+	Today  weatherAlerts `json:"hoje"`
+	Future weatherAlerts `json:"futuro"`
 }
 
 type BaseAlert struct {
@@ -46,12 +46,24 @@ type Alert struct {
 	Instructions []string `json:"instrucoes"`
 }
 
-func (wa *WeatherAlerts) Count() int {
+func (wa *weatherAlerts) Count() int {
 	return len(*wa)
 }
 
-func (aa *ActiveAlerts) GetAll() (WeatherAlerts, WeatherAlerts) {
-	return aa.Today, aa.Future
+func (aa *ActiveAlerts) GetAll() (weatherAlerts, weatherAlerts) {
+	return aa.TodayAlerts(), aa.FutureAlerts()
+}
+
+func (aa *ActiveAlerts) TodayAlerts() weatherAlerts {
+	today := make(weatherAlerts, len(aa.Today))
+	copy(today, aa.Today)
+	return today
+}
+
+func (aa *ActiveAlerts) FutureAlerts() weatherAlerts {
+	future := make(weatherAlerts, len(aa.Future))
+	copy(future, aa.Future)
+	return future
 }
 
 func (aa *ActiveAlerts) Count() int {
