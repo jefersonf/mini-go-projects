@@ -37,5 +37,16 @@ Only `interval_change` and `interval_mod` are optionals, other values must be co
 |`duration_unit` | `day` | Duration unit |
 |`first_medication`| Timestamp | Date and time of the first medication |
 
+## Sample Output
 
-
+```
+000 OFTPRED 2023-11-22 11:20AM 1 eye drop
+001 OPTILAR 2023-11-22 11:30AM 1 eye drop
+002 VIGAMOX 2023-11-22 11:40AM 1 eye drop
+003 OFTPRED 2023-11-22 2:20PM 1 eye drop
+004 OFTPRED 2023-11-22 5:20PM 1 eye drop
+005 VIGAMOX 2023-11-22 5:40PM 1 eye drop
+006 OPTILAR 2023-11-22 7:30PM 1 eye drop
+007 OFTPRED 2023-11-22 8:20PM 1 eye drop
+...
+```
