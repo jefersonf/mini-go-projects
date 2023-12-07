@@ -8,38 +8,38 @@ import (
 func TestGetAll(t *testing.T) {
 	testcases := []struct {
 		alerts           ActiveAlerts
-		TodayAlertsDesc  []string
-		FutureAlertsDesc []string
+		todayAlertsDesc  []string
+		futureAlertsDesc []string
 	}{
 		{
 			alerts: ActiveAlerts{
 				Today:  weatherAlerts{{ID: 100, Description: "Chuvas Intensas"}, {ID: 101, Description: "Tempestades"}},
 				Future: weatherAlerts{{ID: 102, Description: "Baixa Umidade"}},
 			},
-			TodayAlertsDesc:  []string{"Chuvas Intensas", "Tempestades"},
-			FutureAlertsDesc: []string{"Baixa Umidade"},
+			todayAlertsDesc:  []string{"Chuvas Intensas", "Tempestades"},
+			futureAlertsDesc: []string{"Baixa Umidade"},
 		},
 	}
 
 	for _, tc := range testcases {
 		today, future := tc.alerts.GetAll()
-		if today.Count() != len(tc.TodayAlertsDesc) {
-			t.Errorf("TodayAlertsCount got %v, %v\n", today.Count(), len(tc.TodayAlertsDesc))
+		if today.Count() != len(tc.todayAlertsDesc) {
+			t.Errorf("TodayAlertsCount got %v, %v\n", today.Count(), len(tc.todayAlertsDesc))
 		}
 
 		for i := range today {
-			if strings.Compare(today[i].Description, tc.TodayAlertsDesc[i]) != 0 {
-				t.Errorf("TodayAlertDesc got %v, %v\n", today.Count(), len(tc.TodayAlertsDesc))
+			if strings.Compare(today[i].Description, tc.todayAlertsDesc[i]) != 0 {
+				t.Errorf("TodayAlertDesc got %v, %v\n", today.Count(), len(tc.todayAlertsDesc))
 			}
 		}
 
-		if future.Count() != len(tc.FutureAlertsDesc) {
-			t.Errorf("FutureAlertsCount got %v, %v\n", future.Count(), len(tc.FutureAlertsDesc))
+		if future.Count() != len(tc.futureAlertsDesc) {
+			t.Errorf("FutureAlertsCount got %v, %v\n", future.Count(), len(tc.futureAlertsDesc))
 		}
 
 		for i := range future {
-			if strings.Compare(future[i].Description, tc.FutureAlertsDesc[i]) != 0 {
-				t.Errorf("FutureAlertDesc got %v, %v\n", future.Count(), len(tc.FutureAlertsDesc))
+			if strings.Compare(future[i].Description, tc.futureAlertsDesc[i]) != 0 {
+				t.Errorf("FutureAlertDesc got %v, %v\n", future.Count(), len(tc.futureAlertsDesc))
 			}
 		}
 	}
