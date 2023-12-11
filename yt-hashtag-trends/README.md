@@ -1,5 +1,11 @@
 # Extracting YT thumbnail trends based on hashtags
 
+Usage:
+
+```
+go run main.go -ht golang
+```
+
 Example Output.
 
 ```
