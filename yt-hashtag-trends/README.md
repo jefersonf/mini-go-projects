@@ -1,4 +1,4 @@
-# Extracting YT thumbnail trends based on hashtags
+# Extracting YT trends based on hashtags
 
 Usage:
 
