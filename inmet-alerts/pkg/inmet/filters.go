@@ -13,3 +13,13 @@ func (wa *weatherAlerts) ByRegion(region string) weatherAlerts {
 	}
 	return alerts
 }
+
+func (wa *weatherAlerts) BySeverity(severity string) weatherAlerts {
+	alerts := make(weatherAlerts, 0)
+	for _, alert := range *wa {
+		if strings.Compare(alert.Severity, severity) == 0 {
+			alerts = append(alerts, alert)
+		}
+	}
+	return alerts
+}
