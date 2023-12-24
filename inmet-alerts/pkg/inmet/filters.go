@@ -4,6 +4,7 @@ import (
 	"strings"
 )
 
+// ByRegion returns weather alerts filtered by a given region name.
 func (wa *weatherAlerts) ByRegion(region string) weatherAlerts {
 	alerts := make(weatherAlerts, 0)
 	for _, alert := range *wa {
@@ -14,6 +15,7 @@ func (wa *weatherAlerts) ByRegion(region string) weatherAlerts {
 	return alerts
 }
 
+// BySeverity returns weather alerts filtered by a given severity type.
 func (wa *weatherAlerts) BySeverity(severity string) weatherAlerts {
 	alerts := make(weatherAlerts, 0)
 	for _, alert := range *wa {
