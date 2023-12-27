@@ -1,7 +1,7 @@
 package main
 
 import (
-	cv "customvehicles/customvehicles"
+	cv "customvehicles/factory"
 	"fmt"
 )
 
