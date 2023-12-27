@@ -1,4 +1,4 @@
-package customvehicles
+package vehicle
 
 import "errors"
 
