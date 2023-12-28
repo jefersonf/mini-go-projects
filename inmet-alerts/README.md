@@ -1,6 +1,6 @@
 # INMET Alerts CLI
 
-WIP
+Queries INMET Data and filter it by user location!
 
 ### Output of current version
 
