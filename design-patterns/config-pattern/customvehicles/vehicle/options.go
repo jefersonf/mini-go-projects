@@ -48,7 +48,7 @@ func Color(color string) Option {
 
 func Accessory(name string, price float32, description string) Option {
 	return func(vo *VehicleOptions) error {
-		// TODO: validate accessory avaialability here
+		// TODO: validate accessory availability here
 		if price <= 0 {
 			return fmt.Errorf("%w: %v", ErrInvalidAccessoryPrice, price)
 		}
