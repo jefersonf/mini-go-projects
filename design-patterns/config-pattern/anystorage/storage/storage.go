@@ -11,7 +11,7 @@ type Storage struct {
 	StorageOption
 }
 
-func NewStorage(opts ...Option) *Storage {
+func New(opts ...Option) *Storage {
 	options := defaultStorageOptions()
 	for _, opt := range opts {
 		opt(&options)
