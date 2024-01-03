@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	vehicle := f.NewVehicle(
+	vehicle := f.New(
 		f.Type(f.SUV),
 		f.Model("XLE"),
 		f.Color("gray"),
