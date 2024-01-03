@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-	s := storage.NewStorage(storage.WithMemoryRepository())
+	s := storage.New(storage.WithMemoryRepository())
 	fmt.Println(s)
 }
