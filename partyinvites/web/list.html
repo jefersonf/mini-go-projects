@@ -1,0 +1,24 @@
+{{ define "body" }}
+
+{{ if eq (len .) 0 }}
+
+<h3>Infelizmente, ninguém ainda confirmou presença.</h3>
+<p>Não perca tempo e acesse esse <a href="/form">formulário</a>.</p>
+
+{{ else }}
+
+<h1>Lista de convidados.</h1>
+<table>
+    <thead>
+        <tr><td>Nome</td><td>Email</td><td>Tel.</td><td>Estará presente?</td></tr>
+    </thead>
+    <tbody>
+        {{ range . }}
+            <tr><td>{{ .Name }}</td><td>{{ .Email }}</td><td>{{ .Phone }}</td><td>{{ if .WillAttend }} Sim {{ else }} Não {{ end }}</td></tr>
+        {{ end }}
+    </tbody>
+</table>
+
+{{ end }}
+
+{{ end }}

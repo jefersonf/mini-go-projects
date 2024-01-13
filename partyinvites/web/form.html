@@ -1,0 +1,35 @@
+{{ define "body" }}
+
+<div>
+    {{ if gt (len .Errors) 0 }}
+    <div>
+        <ul>
+            {{ range .Errors }}
+                <li> {{ . }}</li>
+            {{ end }}
+        </ul>
+    </div>
+    {{ end }}
+
+    <form action="/form" method="post">
+        <div class="from-group">
+            <input type="text" name="name" placeholder="Enter your name" value="{{ .Session.Name }}">
+        </div>
+        <div class="from-group">
+            <input type="email" name="email" placeholder="Enter your email" value="{{ .Session.Email }}">
+        </div>
+        <div class="from-group">
+            <input type="tel" name="phone" placeholder="Enter your phone number" value="{{ .Session.Phone }}">
+        </div>
+        <div class="from-group">
+            <label for="willattend">Você vai?</label>
+            <select name="willattend">
+                <option value="true" {{ if .WillAttend }} selected{{ end }}>Sim, eu vou.</option>
+                <option value="false" {{ if not .WillAttend }} selected{{ end }}>Não, não vai dar.</option>
+            </select>
+        </div>
+    
+        <input type="submit" value="Enviar">
+    </form>
+</div>
+{{ end }}
