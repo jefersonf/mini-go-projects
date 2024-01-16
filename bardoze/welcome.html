@@ -1,7 +1,11 @@
-{{ define "welcome" }}
+{{ define "body" }}
 
-<h1>Bem-vindo ao Bar do Zé!</h1>
-<p>Soborei os melhores petiscos da região.</p>
-<p>Nosso cardápio conta com mais de {{ . }} items.</p>
+<div class="container">
+    <h1>Bem-vindo ao Bar do Zé!</h1>
+    <p>Soborei os melhores petiscos da região.</p>
+    <p>Nosso cardápio conta com {{ . }} items.</p>
+    
+    <a href="/dishes">Ver cardápio.</a>
+</div>
 
 {{ end }}

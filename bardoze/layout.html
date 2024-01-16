@@ -4,9 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bar do Zé</title>
+    <style>
+        .container {
+            width: 66%;
+            margin: 0 auto;
+            padding: 10%;
+        } 
+        .special {
+            color: blue;
+        }
+    </style>
 </head>
 <body>
-    {{ block "welcome" }} welcome header {{ end }}
-    {{ block "dishes" . }} list of petiscos {{ end }}
+    {{ block "body" . }} content placeholder {{ end }}
 </body>
 </html>

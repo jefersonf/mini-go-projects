@@ -1,10 +1,19 @@
-{{ define "dishes" }}
+{{ define "body" }}
 
-<h3>Petiscos</h3>
-<ul>
-    {{ range . }}
-        <li>{{ .Name }}, R$ {{ .Price }} {{ .Special }} (Prato da Casa!) {{ end }}</li>
-    {{ end }}
-</ul>
+<div class="container">
+    <h3>Petiscos</h3>
+    <ul>
+        {{ range . }}
+            <li>
+                <div>
+                    <h4>
+                        {{ .Name }}, R$ {{ .Price }} {{ if .Special }} (<span class="special">Prato da Casa!</span>) {{ end }}
+                    </h4>
+                    <p>{{ .Desc }}</p>
+                </div>
+            </li>
+        {{ end }}
+    </ul>
+</div>
 
 {{ end }}
