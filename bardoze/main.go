@@ -1,14 +1,22 @@
 package main
 
 import (
+	"encoding/json"
 	"html/template"
 	"net/http"
+	"os"
 )
 
 type dish struct {
-	Name, Desc, Code string
-	Price            float32
-	Special          bool
+	Code    string  `json:"code"`
+	Name    string  `json:"name"`
+	Desc    string  `json:"description"`
+	Price   float32 `json:"price"`
+	Special bool    `json:"special"`
+}
+
+type dishesFromJSON struct {
+	Dishes []dish
 }
 
 type Menu map[string]*dish
@@ -21,30 +29,24 @@ var (
 )
 
 func init() {
-	// load dishes sample
-	// TODO: move this data to dishes.json
-	dishes = map[string]*dish{
-		"SUC01": {
-			Name:  "Suco de Laranja",
-			Desc:  "Suco de laranja natural, 300ml",
-			Price: 4.,
-		},
-		"SUC02": {
-			Name:  "Suco de Uva",
-			Desc:  "Suco de uva natural, 300ml",
-			Price: 5.,
-		},
-		"SAL01": {
-			Name:  "Pastel de Queijo",
-			Desc:  "Pastel de Queijo Mussarela, 300g",
-			Price: 12.,
-		},
-		"SAL02": {
-			Name:    "Pastel de Carne de Sol",
-			Desc:    "Pastel de Carne de Sol, 300g",
-			Price:   18.,
-			Special: true,
-		},
+
+	dishes = make(map[string]*dish)
+
+	bytes, err := os.ReadFile("dishes.json")
+	nilOrPanic(err)
+
+	var data dishesFromJSON
+	err = json.Unmarshal(bytes, &data)
+	nilOrPanic(err)
+
+	for _, d := range data.Dishes {
+		dishes[d.Code] = &dish{
+			Code:    d.Code,
+			Name:    d.Name,
+			Desc:    d.Desc,
+			Price:   d.Price,
+			Special: d.Special,
+		}
 	}
 
 	views := []string{"welcome", "dishes"}
