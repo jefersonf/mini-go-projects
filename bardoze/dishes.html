@@ -1,0 +1,10 @@
+{{ define "dishes" }}
+
+<h3>Petiscos</h3>
+<ul>
+    {{ range . }}
+        <li>{{ .Name }}, R$ {{ .Price }} {{ .Special }} (Prato da Casa!) {{ end }}</li>
+    {{ end }}
+</ul>
+
+{{ end }}
