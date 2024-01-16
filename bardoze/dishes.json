@@ -1,0 +1,32 @@
+{
+    "dishes": [
+        {
+            "code": "SUC01",
+            "name": "Suco de Laranja",
+            "description": "Suco de laranja natural, 300ml",
+            "price": 4.0,
+            "special": false
+        },
+        {
+            "code": "SUC02",
+            "name": "Suco de Uva",
+            "description": "Suco de uva natural, 300ml",
+            "price": 5.0,
+            "special": false
+        },
+        {
+            "code": "SAL01",
+            "name": "Pastel de Queijo",
+            "description": "Pastel de Queijo Mussarela, 300g",
+            "price": 12.0,
+            "special": false
+        },
+        {
+            "code": "SAL02",
+            "name": "Pastel de Carne de Sol",
+            "description": "Pastel de Carne de Sol, 300g",
+            "price": 18.0,
+            "special": true
+        } 
+    ]
+}
