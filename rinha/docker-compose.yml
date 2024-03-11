@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:latest
+    hostname: db
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./seed/init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      - MYSQL_USER=boss
+      - MYSQL_PASSWORD=s3cr3t
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_DATABASE=bank
+    deploy:
+      resources:
+        limits:
+          cpus: "0.60"
+          memory: "440MB"
+
+  api01: &restapi
+    image: testapi2
+    hostname: api01
+    depends_on:
+      - db
+    deploy:
+      resources:
+        limits:
+          cpus: "0.40"
+          memory: "44MB"
+
+  api02:
+    <<: *restapi
+    hostname: api02
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - db
+      - api01
+      - api02
+    ports:
+      - "9999:9999"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.10"
+          memory: "22MB"
+networks:
+  default:
+    driver: bridge
+    name: rinha-nginx-2024q1
