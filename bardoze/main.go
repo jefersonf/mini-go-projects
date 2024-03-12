@@ -60,6 +60,7 @@ func init() {
 }
 
 func main() {
+
 	http.HandleFunc("/", welcomeHandler)
 	http.HandleFunc("/dishes", dishesHandler)
 
