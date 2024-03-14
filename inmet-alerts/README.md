@@ -5,7 +5,7 @@ Queries INMET data and filter weather alerts based on user location! WIP.
 ### Usage
 
 ```
-go run cmd/alerts.go
+go run cmd/alertas.go
 ```
 
 
