@@ -2,6 +2,13 @@
 
 Queries INMET data and filter weather alerts based on user location! WIP.
 
+### Usage
+
+```
+go run cmd/alerts.go
+```
+
+
 ### Output of current version
 
 
