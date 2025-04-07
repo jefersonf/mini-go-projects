@@ -7,7 +7,7 @@ type Vehicle struct {
 	VehicleOptions
 }
 
-// New creates a new vehicle that can be customized by input opti meons.
+// New creates a new vehicle that can be customized by input options.
 func New(opts ...Option) *Vehicle {
 	options := defaultOptions()
 	for _, customOption := range opts {
