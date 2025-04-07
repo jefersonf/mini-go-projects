@@ -41,7 +41,7 @@ type VideoInfo struct {
 
 func main() {
 
-	flag.StringVar(&hashtag, "ht", "", "target hashtag")
+	flag.StringVar(&hashtag, "ht", "ai", "target hashtag")
 	flag.UintVar(&topn, "t", 10, "top N")
 	flag.Parse()
 
@@ -63,8 +63,7 @@ func main() {
 	}
 
 	type cut struct {
-		L int
-		R int
+		L, R int
 	}
 
 	cuts := make([]cut, 0)
@@ -92,18 +91,18 @@ func main() {
 			}
 			j++
 		}
-		i = i + j + 1
+		i += j + 1
 	}
 
 	rank := make([]VideoInfo, 0)
 	for i := range cuts {
-		var d DraftDTO
-		err = json.Unmarshal(body[cuts[i].L:cuts[i].R], &d)
+		var draft DraftDTO
+		err = json.Unmarshal(body[cuts[i].L:cuts[i].R], &draft)
 		if err != nil {
 			continue
 		}
-		title := d.Runs[0].Text
-		label := d.Accessibility.AccessibilityData.Label
+		title := draft.Runs[0].Text
+		label := draft.Accessibility.AccessibilityData.Label
 		r1 := strings.Split(label[len(title)+1:], " ")
 
 		viewsIdx, views := len(r1)-1, 0
