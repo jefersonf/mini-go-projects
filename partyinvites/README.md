@@ -8,5 +8,5 @@ Example project from Pro Go book (Section 1). That's my own version so it does n
 - Template Parsing
 - Memory storage
 - No validation
-- NO CSS on UI
+- No CSS
 
