@@ -11,18 +11,23 @@ type Server struct{}
 var lock = &sync.Mutex{}
 var server *Server
 
+var (
+	MsgCreatingServer       = "Creating server.."
+	MsgServerAlreadyCreated = "Server already created" 
+)
+
 func NewServer() *Server {
 	if server == nil {
 		lock.Lock()
 		defer lock.Unlock()
 		if server == nil {
-			fmt.Println("creating server..")
+			fmt.Println(MsgCreatingServer)
 			server = &Server{}
 		} else {
-			fmt.Println("server already created")
+			fmt.Println(MsgServerAlreadyCreated)
 		}
 	} else {
-		fmt.Println("server already created")
+		fmt.Println(MsgServerAlreadyCreated)
 	}
 	return server
 }
