@@ -1,4 +1,4 @@
-# Extracting YT trends based on hashtags
+# Extracting YouTube trends based on hashtags
 
 Usage:
 
@@ -6,7 +6,7 @@ Usage:
 go run main.go -ht golang
 ```
 
-Example Output.
+Example Output (from April 7, 2025).
 
 ```
 Top 10 most popular videos on Youtube with #golang
